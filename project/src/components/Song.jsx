@@ -23,20 +23,20 @@ const Song = ({ data, deleteJob }) => {
           <Card.Body>
             <Card.Title>{data.title}</Card.Title>
             <Card.Text>{data.duration} min</Card.Text>
-            <Link to={`/favorites`}>
-              <Badge
-                variant="warning"
-                onClick={() => {
-                  // dispatch({
-                  //   type: `ADD_TO_FAVORITES`,
-                  //   payload: data,
-                  // });
-                  dispatch(addToFavoritesAction(data));
-                }}
-              >
-                <AiTwotoneHeart id="favorite" />
-              </Badge>
-            </Link>
+            {/* <Link to={`/favorites`}> */}
+            <Badge
+              variant="warning"
+              onClick={() => {
+                // dispatch({
+                //   type: `ADD_TO_FAVORITES`,
+                //   payload: data,
+                // });
+                dispatch(addToFavoritesAction(data));
+              }}
+            >
+              <AiTwotoneHeart id="favorite" />
+            </Badge>
+            {/* </Link> */}
             {deleteJob && (
               <RiDeleteBin2Fill
                 id="deleteJob"
