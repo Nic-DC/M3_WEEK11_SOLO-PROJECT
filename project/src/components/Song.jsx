@@ -16,44 +16,40 @@ const Song = ({ data, deleteJob }) => {
   const dispatch = useDispatch();
   console.log({ dispatch });
   return (
-    <Row>
-      <Col>
-        <Card>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>{data.title}</Card.Title>
-            <Card.Text>{data.duration} min</Card.Text>
-            {/* <Link to={`/favorites`}> */}
-            <Badge
-              variant="warning"
-              onClick={() => {
-                // dispatch({
-                //   type: `ADD_TO_FAVORITES`,
-                //   payload: data,
-                // });
-                dispatch(addToFavoritesAction(data));
-              }}
-            >
-              <AiTwotoneHeart id="favorite" />
-            </Badge>
-            {/* </Link> */}
-            {deleteJob && (
-              <RiDeleteBin2Fill
-                id="deleteJob"
-                className="ml-2"
-                onClick={() => {
-                  // dispatch({
-                  //   type: `DELETE_FAVORITE`,
-                  //   payload: data._id,
-                  // });
-                  dispatch(deleteFavoriteAction(data._id));
-                }}
-              />
-            )}
-          </Card.Body>
-        </Card>
-      </Col>
-    </Row>
+    <Card className="p-2 m-2">
+      <Card.Img variant="top" src={data.artist.picture_medium} />
+      <Card.Body>
+        <Card.Title>{data.title}</Card.Title>
+        <Card.Text>{data.duration} min</Card.Text>
+        {/* <Link to={`/favorites`}> */}
+        <Badge
+          variant="warning"
+          onClick={() => {
+            // dispatch({
+            //   type: `ADD_TO_FAVORITES`,
+            //   payload: data,
+            // });
+            dispatch(addToFavoritesAction(data));
+          }}
+        >
+          <AiTwotoneHeart id="favorite" />
+        </Badge>
+        {/* </Link> */}
+        {deleteJob && (
+          <RiDeleteBin2Fill
+            id="deleteJob"
+            className="ml-2"
+            onClick={() => {
+              // dispatch({
+              //   type: `DELETE_FAVORITE`,
+              //   payload: data._id,
+              // });
+              dispatch(deleteFavoriteAction(data._id));
+            }}
+          />
+        )}
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -42,11 +42,11 @@ const HomepageMorning = () => {
     <div>
       <h2 className="text-light">Good Morning</h2>
       <div className="row mt-4 row-cols-5" id="goodMorning">
-        <div className="col-lg-2">
-          {songs.map((song) => (
-            <Song key={song.id} data={song} />
-          ))}
-        </div>
+        {/* <div className="col-lg-2"> */}
+        {songs.map((song) => (
+          <Song key={song.id} data={song} />
+        ))}
+        {/* </div> */}
       </div>
     </div>
   );
