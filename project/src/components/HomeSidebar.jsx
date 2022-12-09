@@ -28,7 +28,7 @@ const HomeSidebar = () => {
         aria-expanded="false"
         aria-controls="collapseExample"
       >
-        <div id="search" clasNames="sidebar-align-left grow">
+        <div id="search" className="sidebar-align-left grow">
           <BsSearch className="mr-3 text-light" />
           <span className="sidebar-text text-light">Search</span>
         </div>

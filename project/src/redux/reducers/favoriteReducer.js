@@ -15,7 +15,7 @@ const favoriteReducer = (state = initialState, action) => {
     case DELETE_FAVORITE:
       return {
         ...state,
-        favList: [...state.favList.filter((song) => song._id !== action.payload)],
+        favList: [...state.favList.filter((song) => song.id !== action.payload)],
       };
     default:
       return state;

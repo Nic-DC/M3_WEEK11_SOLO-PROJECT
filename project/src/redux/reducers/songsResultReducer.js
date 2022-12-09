@@ -1,10 +1,11 @@
-import { FETCH_SONGS, FETCH_SONGS_LOADING, TRIGGER_FETCH, FETCH_ERROR } from "../actions";
+import { FETCH_SONGS, FETCH_DEFAULT_SONGS, FETCH_SONGS_LOADING, TRIGGER_FETCH, FETCH_ERROR } from "../actions";
 
 const initialState = {
   searchedSongs: [],
   isLoading: true,
   triggeredFetch: false, // used as a suplimentary condition to show the Spinner
   isError: false,
+  defaultSongs: [],
 };
 
 const songsResultReducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const songsResultReducer = (state = initialState, action) => {
       return {
         ...state,
         searchedSongs: [...action.payload],
+      };
+
+    case FETCH_DEFAULT_SONGS:
+      return {
+        ...state,
+        defaultSongs: [...action.payload],
       };
 
     case FETCH_SONGS_LOADING:

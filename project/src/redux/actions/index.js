@@ -1,6 +1,7 @@
 export const ADD_TO_FAVORITES = `ADD_TO_FAVORITES`;
 export const DELETE_FAVORITE = `DELETE_FAVORITE`;
 export const FETCH_SONGS = `FETCH_SONGS`;
+export const FETCH_DEFAULT_SONGS = `FETCH_DEFAULT_SONGS`;
 export const FETCH_SONGS_LOADING = `FETCH_SONGS_LOADING`;
 export const TRIGGER_FETCH = `TRIGGER_FETCH`;
 export const FETCH_ERROR = `FETCH_ERROR`;
@@ -26,6 +27,13 @@ export const fetchSongsAction = (songs) => {
   };
 };
 
+export const fetchDefaultSongsAction = (songs) => {
+  return {
+    type: FETCH_DEFAULT_SONGS,
+    payload: songs,
+  };
+};
+
 export const fetchSongsLoadingAction = (bool) => {
   return {
     type: FETCH_SONGS_LOADING,
@@ -46,12 +54,58 @@ export const fetchErrorAction = (bool) => {
   };
 };
 
-export const getJobsAction = (query) => {
+export const getSongsActionOnLoad = () => {
   return async (dispatch, getState) => {
     console.log("Fetching the songs...");
-    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen";
     try {
-      const response = await fetch(baseEndpoint + query + "&limit=20");
+      // const response = await fetch(baseEndpoint + query + "&limit=20");
+      const response = await fetch(baseEndpoint + "&limit=20");
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        const fetchedSongs = data.data;
+        // dispatch({
+        //   type: GET_JOBS,
+        //   payload: fetchedJobs,
+        // });
+        dispatch(fetchErrorAction(false));
+        dispatch(fetchDefaultSongsAction(fetchedSongs));
+
+        dispatch(triggeredFetchAction());
+
+        // AFTER we dispatch the GET_JOBS action, we create a
+        // setTimeout function that will END showing the spinner 100ms
+        // before the books are rendered
+        setTimeout(() => {
+          dispatch(fetchSongsLoadingAction(false));
+        }, 100);
+      } else {
+        alert("Error fetching results");
+
+        dispatch(triggeredFetchAction());
+        dispatch(fetchSongsLoadingAction(false));
+
+        dispatch(fetchErrorAction(true));
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch(triggeredFetchAction());
+      dispatch(fetchSongsLoadingAction(false));
+
+      dispatch(fetchErrorAction(true));
+    }
+  };
+};
+
+export const getSongsAction = (query) => {
+  return async (dispatch, getState) => {
+    console.log("Fetching the songs...");
+    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen";
+    try {
+      // const response = await fetch(baseEndpoint + query + "&limit=20");
+      const response = await fetch(baseEndpoint + "&limit=20");
       if (response.ok) {
         const data = await response.json();
         console.log(data);
