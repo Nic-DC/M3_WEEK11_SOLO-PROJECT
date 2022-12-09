@@ -1,6 +1,9 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { BsPersonCircle } from "react-icons/bs";
+import { BsFillTrash2Fill } from "react-icons/bs";
+
+import { Form } from "react-bootstrap";
 
 const HomeProfile = () => {
   return (
@@ -18,19 +21,22 @@ const HomeProfile = () => {
       </div>
 
       {/* <!-- SEARCH BAR--> */}
-      <div className="input-group customizeInput collapse" id="collapseExample">
-        <input
+      <div className="input-group customizeInput" id="collapseExample">
+        {/* <input
           type="text"
           className="form-control"
           placeholder="search album / artist / band"
           aria-label="search"
           aria-describedby="searchInput"
           id="inputSearch"
-        />
+        /> */}
+        <Form>
+          <Form.Control type="search" placeholder="type and press Enter" />
+        </Form>
 
         <div className="input-group-prepend">
           <button type="button" class="btn btn-dark grow" id="resetInput">
-            <i className="bi bi-archive-fill"></i>
+            <BsFillTrash2Fill />
           </button>
         </div>
       </div>

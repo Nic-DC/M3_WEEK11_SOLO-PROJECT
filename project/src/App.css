@@ -488,3 +488,7 @@ PROGRESS BAR
   color: white;
   text-decoration: none;
 }
+
+#collapseExample {
+  width: 50%;
+}
