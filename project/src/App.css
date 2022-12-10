@@ -494,18 +494,24 @@ PROGRESS BAR
 }
 
 #favorite,
-#deleteSong {
+#deleteSong,
+#playSongHome {
   transition: transform 350ms ease-out;
   font-size: 1rem;
   cursor: pointer;
 }
 
 #favorite:hover,
-#deleteSong:hover {
+#deleteSong:hover,
+#playSongHome:hover {
   transform: scale(1.5);
 }
 
 #deleteSong {
   font-size: 1.5rem;
   color: red;
+}
+
+#cardText {
+  height: 350px;
 }

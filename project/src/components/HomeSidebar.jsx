@@ -5,6 +5,8 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import { BiHomeSmile } from "react-icons/bi";
 
+import { Link } from "react-router-dom";
+
 const HomeSidebar = () => {
   return (
     <div>
@@ -42,10 +44,12 @@ const HomeSidebar = () => {
         <AiOutlinePlusSquare className="mr-3 text-light" />
         <span class="sidebar-text text-light">Create Playlist</span>
       </div>
-      <div id="likedSongs" className="sidebar-align-left grow d-none d-md-block ml-0">
-        <img class="img-fluid img-small mr-3" src={heart} alt="white heart on purple background" />
-        <span class="sidebar-text text-light">Liked Songs</span>
-      </div>
+      <Link to={`/favorites`}>
+        <div id="likedSongs" className="sidebar-align-left grow d-none d-md-block ml-0">
+          <img class="img-fluid img-small mr-3" src={heart} alt="white heart on purple background" />
+          <span class="sidebar-text text-light">Liked Songs</span>
+        </div>
+      </Link>
 
       {/* <!-- DIVIDER --> */}
       <div class="translucidLine d-none d-md-block"></div>

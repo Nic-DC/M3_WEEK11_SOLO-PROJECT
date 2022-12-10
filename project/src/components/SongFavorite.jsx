@@ -6,7 +6,7 @@ import { deleteFavoriteAction } from "../redux/actions";
 const SongFavorite = ({ data }) => {
   const dispatch = useDispatch();
   return (
-    <Toast>
+    <Toast className="mb-4">
       <Toast.Header closeButton={false}>
         <img src={data.artist.picture_small} className="rounded mr-2" alt="" />
         <strong className="mr-auto">

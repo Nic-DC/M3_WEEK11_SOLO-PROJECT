@@ -2,6 +2,8 @@ import { Row, Col, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
+import { BsPlayCircle } from "react-icons/bs";
+import { RxDividerVertical } from "react-icons/rx";
 import { addToFavoritesAction, deleteFavoriteAction } from "../redux/actions";
 
 import { Card } from "react-bootstrap";
@@ -16,14 +18,14 @@ const Song = ({ data, deleteSong }) => {
   const dispatch = useDispatch();
   console.log({ dispatch });
   return (
-    <Card className="p-2 m-2">
+    <Card className="p-0 m-2">
       <Card.Img variant="top" src={data.artist.picture_medium} />
       <Card.Body>
         <Card.Title className="card-title line-clamp-2">{data.title}</Card.Title>
-        <Card.Text className="card-text line-clamp-2">
-          {data.duration} min |{" "}
+        <Card.Text className="card-text line-clamp-2" id="cardText">
+          {data.duration}' <RxDividerVertical />{" "}
           <Badge
-            variant="warning"
+            variant={songsList.includes(data) ? "dark" : "light"}
             onClick={() => {
               // dispatch({
               //   type: `ADD_TO_FAVORITES`,
@@ -33,7 +35,8 @@ const Song = ({ data, deleteSong }) => {
             }}
           >
             <AiTwotoneHeart id="favorite" />
-          </Badge>
+          </Badge>{" "}
+          <RxDividerVertical /> <BsPlayCircle id="playSongHome" />
         </Card.Text>
         {/* <Link to={`/favorites`}> */}
 
