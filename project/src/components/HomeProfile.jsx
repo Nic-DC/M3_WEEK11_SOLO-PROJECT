@@ -5,7 +5,25 @@ import { BsFillTrash2Fill } from "react-icons/bs";
 
 import { Form } from "react-bootstrap";
 
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { getSongsAction } from "../redux/actions";
+
 const HomeProfile = () => {
+  const dispatch = useDispatch();
+
+  const [query, setQuery] = useState("");
+
+  const handleQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getSongsAction(query));
+  };
+
   return (
     <div id="profile-div" class="mb-4">
       {/* <!-- <div class="arrow-div d-none d-md-block"> --> */}
@@ -30,8 +48,8 @@ const HomeProfile = () => {
           aria-describedby="searchInput"
           id="inputSearch"
         /> */}
-        <Form>
-          <Form.Control type="search" placeholder="type and press Enter" />
+        <Form onSubmit={handleSubmit}>
+          <Form.Control type="search" placeholder="type and press Enter" value={query} onChange={handleQuery} />
         </Form>
 
         <div className="input-group-prepend">

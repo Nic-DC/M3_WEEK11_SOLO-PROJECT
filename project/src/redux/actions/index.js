@@ -54,6 +54,9 @@ export const fetchErrorAction = (bool) => {
   };
 };
 
+// i'll create a random function and an "endpoints" array
+// so that when the page loads, the result of the fetch will vary
+// [queen, joe cocker, rhcp, julio iglesias, iron maiden, eminem, notorious big, tupac, pedro capo...]
 export const getSongsActionOnLoad = () => {
   return async (dispatch, getState) => {
     console.log("Fetching the songs...");
@@ -102,10 +105,10 @@ export const getSongsActionOnLoad = () => {
 export const getSongsAction = (query) => {
   return async (dispatch, getState) => {
     console.log("Fetching the songs...");
-    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen";
+    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
     try {
-      // const response = await fetch(baseEndpoint + query + "&limit=20");
-      const response = await fetch(baseEndpoint + "&limit=20");
+      const response = await fetch(baseEndpoint + query + "&limit=20");
+
       if (response.ok) {
         const data = await response.json();
         console.log(data);

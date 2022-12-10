@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+import Song from "./Song";
+
 const HomeTry = () => {
+  const songs = useSelector((state) => state.songsResult.searchedSongs);
+
   return (
     <div>
       {/* <!-- SHOWS TO TRY Section --> */}
@@ -29,6 +34,9 @@ const HomeTry = () => {
               </div>
             </div>
           </div> --> */}
+        {songs.slice(5, 9).map((song) => (
+          <Song key={song.id} data={song} deleteSong={false} />
+        ))}
       </div>
     </div>
   );

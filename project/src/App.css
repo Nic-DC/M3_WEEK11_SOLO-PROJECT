@@ -492,3 +492,20 @@ PROGRESS BAR
 #collapseExample {
   width: 50%;
 }
+
+#favorite,
+#deleteSong {
+  transition: transform 350ms ease-out;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#favorite:hover,
+#deleteSong:hover {
+  transform: scale(1.5);
+}
+
+#deleteSong {
+  font-size: 1.5rem;
+  color: red;
+}

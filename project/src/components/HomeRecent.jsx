@@ -1,4 +1,11 @@
+import { useSelector } from "react-redux";
+
+import Song from "./Song";
+
 const HomeRecent = () => {
+  const songs = useSelector((state) => state.songsResult.searchedSongs);
+  console.log(songs);
+
   return (
     <div>
       <div id="recentlyPlayed-div" class="mt-4">
@@ -24,6 +31,9 @@ const HomeRecent = () => {
         </div>
       </div>
     </div>--> */}
+        {songs.slice(0, 4).map((song) => (
+          <Song key={song.id} data={song} deleteSong={false} />
+        ))}
       </div>
     </div>
   );

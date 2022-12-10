@@ -8,10 +8,10 @@ import { Card } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
 
-const Song = ({ data, deleteJob }) => {
-  console.log({ deleteJob });
-  const jobsList = useSelector((state) => state.favorites.favList);
-  console.log({ jobsList });
+const Song = ({ data, deleteSong }) => {
+  console.log({ deleteSong });
+  const songsList = useSelector((state) => state.favorites.favList);
+  console.log({ songsList });
 
   const dispatch = useDispatch();
   console.log({ dispatch });
@@ -19,32 +19,35 @@ const Song = ({ data, deleteJob }) => {
     <Card className="p-2 m-2">
       <Card.Img variant="top" src={data.artist.picture_medium} />
       <Card.Body>
-        <Card.Title>{data.title}</Card.Title>
-        <Card.Text>{data.duration} min</Card.Text>
+        <Card.Title className="card-title line-clamp-2">{data.title}</Card.Title>
+        <Card.Text className="card-text line-clamp-2">
+          {data.duration} min |{" "}
+          <Badge
+            variant="warning"
+            onClick={() => {
+              // dispatch({
+              //   type: `ADD_TO_FAVORITES`,
+              //   payload: data,
+              // });
+              dispatch(addToFavoritesAction(data));
+            }}
+          >
+            <AiTwotoneHeart id="favorite" />
+          </Badge>
+        </Card.Text>
         {/* <Link to={`/favorites`}> */}
-        <Badge
-          variant="warning"
-          onClick={() => {
-            // dispatch({
-            //   type: `ADD_TO_FAVORITES`,
-            //   payload: data,
-            // });
-            dispatch(addToFavoritesAction(data));
-          }}
-        >
-          <AiTwotoneHeart id="favorite" />
-        </Badge>
+
         {/* </Link> */}
-        {deleteJob && (
+        {deleteSong && (
           <RiDeleteBin2Fill
-            id="deleteJob"
+            id="deleteSong"
             className="ml-2"
             onClick={() => {
               // dispatch({
               //   type: `DELETE_FAVORITE`,
               //   payload: data._id,
               // });
-              dispatch(deleteFavoriteAction(data._id));
+              dispatch(deleteFavoriteAction(data.id));
             }}
           />
         )}
