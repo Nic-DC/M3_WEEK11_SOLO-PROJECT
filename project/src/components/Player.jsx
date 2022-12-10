@@ -10,23 +10,53 @@ import { RiPlayList2Fill } from "react-icons/ri";
 import { MdDevices } from "react-icons/md";
 import { BiVolumeFull } from "react-icons/bi";
 
+import { playedSongsAction } from "../redux/actions";
+
+import { useSelector, useDispatch } from "react-redux";
+
 const Player = () => {
+  const songToPlay = useSelector((state) => state.songsResult.songToPlay);
+  const dispatch = useDispatch();
+
   return (
     <div id="fixedContainer" class="container-fluid">
       <div className="row">
         <div className="col-sm-6 col-lg-3 order-sm-2 order-lg-0">
           <div id="fixed-left">
-            <img className="img-fluid mr-2 grow" src="/assets/purple-heart.png" alt="" id="fixedImage" />
+            {songToPlay ? (
+              <img className="img-fluid mr-2 grow" src={songToPlay.artist.picture_small} alt="" id="fixedImage" />
+            ) : (
+              <img className="img-fluid mr-2 grow" src="/assets/purple-heart.png" alt="" id="fixedImage" />
+            )}
+
             <div className="title-left mr-4">
-              <p className="bold" id="fixedTitle">
-                Choose an artist or album
-              </p>
-              <p className="faded" id="fixedBand">
-                Breathe the music!
-              </p>
+              {songToPlay ? (
+                <>
+                  <p className="bold" id="fixedTitle">
+                    {songToPlay.artist.name}
+                  </p>
+                  <p className="faded" id="fixedBand">
+                    {songToPlay.title}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="bold" id="fixedTitle">
+                    Choose an artist or album
+                  </p>
+                  <p className="faded" id="fixedBand">
+                    Breathe the music!
+                  </p>
+                </>
+              )}
             </div>
             <div className="icons-left">
-              <AiOutlineHeart className="mr-2 grow" />
+              <AiOutlineHeart
+                className="mr-2 grow"
+                onClick={() => {
+                  dispatch(playedSongsAction(songToPlay));
+                }}
+              />
               <BsPip className="grow" />
             </div>
           </div>

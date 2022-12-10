@@ -6,6 +6,7 @@ import { AiOutlinePlusSquare } from "react-icons/ai";
 import { BiHomeSmile } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
+import HomeSidebarPlaylist from "./HomeSidebarPlaylist";
 
 const HomeSidebar = () => {
   return (
@@ -55,16 +56,8 @@ const HomeSidebar = () => {
       <div class="translucidLine d-none d-md-block"></div>
 
       {/* <!-- SIDEBAR - LIST DIV --> */}
-      <ul id="sidebarList" className="sidebar-list d-none d-md-block">
-        {/* <!-- <li class="sidebar-items sidebar-text">Library</li>
-    <li class="sidebar-items sidebar-text">Library</li>
-    <li class="sidebar-items sidebar-text">Library</li>
-    <li class="sidebar-items sidebar-text">Library</li> --> */}
-      </ul>
+      <HomeSidebarPlaylist />
     </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 export default HomeSidebar;

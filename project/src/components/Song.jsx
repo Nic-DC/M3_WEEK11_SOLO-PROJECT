@@ -4,7 +4,7 @@ import { RiDeleteBin2Fill } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { RxDividerVertical } from "react-icons/rx";
-import { addToFavoritesAction, deleteFavoriteAction } from "../redux/actions";
+import { addToFavoritesAction, deleteFavoriteAction, playSongAction } from "../redux/actions";
 
 import { Card } from "react-bootstrap";
 
@@ -36,7 +36,13 @@ const Song = ({ data, deleteSong }) => {
           >
             <AiTwotoneHeart id="favorite" />
           </Badge>{" "}
-          <RxDividerVertical /> <BsPlayCircle id="playSongHome" />
+          <RxDividerVertical />{" "}
+          <BsPlayCircle
+            id="playSongHome"
+            onClick={() => {
+              dispatch(playSongAction(data));
+            }}
+          />
         </Card.Text>
         {/* <Link to={`/favorites`}> */}
 

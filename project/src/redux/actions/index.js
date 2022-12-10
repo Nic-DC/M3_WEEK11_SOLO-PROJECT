@@ -1,3 +1,5 @@
+export const PLAY_SONG = `PLAY_SONG`;
+export const PLAYED_SONGS = `PLAYED_SONGS`;
 export const ADD_TO_FAVORITES = `ADD_TO_FAVORITES`;
 export const DELETE_FAVORITE = `DELETE_FAVORITE`;
 export const FETCH_SONGS = `FETCH_SONGS`;
@@ -5,6 +7,20 @@ export const FETCH_DEFAULT_SONGS = `FETCH_DEFAULT_SONGS`;
 export const FETCH_SONGS_LOADING = `FETCH_SONGS_LOADING`;
 export const TRIGGER_FETCH = `TRIGGER_FETCH`;
 export const FETCH_ERROR = `FETCH_ERROR`;
+
+export const playSongAction = (song) => {
+  return {
+    type: PLAY_SONG,
+    payload: song,
+  };
+};
+
+export const playedSongsAction = (song) => {
+  return {
+    type: PLAYED_SONGS,
+    payload: song,
+  };
+};
 
 export const addToFavoritesAction = (song) => {
   return {

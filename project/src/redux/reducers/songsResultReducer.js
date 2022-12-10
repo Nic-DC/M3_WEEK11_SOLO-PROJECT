@@ -1,15 +1,37 @@
-import { FETCH_SONGS, FETCH_DEFAULT_SONGS, FETCH_SONGS_LOADING, TRIGGER_FETCH, FETCH_ERROR } from "../actions";
+import {
+  FETCH_SONGS,
+  FETCH_DEFAULT_SONGS,
+  FETCH_SONGS_LOADING,
+  TRIGGER_FETCH,
+  FETCH_ERROR,
+  PLAY_SONG,
+  PLAYED_SONGS,
+} from "../actions";
 
 const initialState = {
+  songToPlay: null,
   searchedSongs: [],
   isLoading: true,
   triggeredFetch: false, // used as a suplimentary condition to show the Spinner
   isError: false,
   defaultSongs: [],
+  playedSongs: [],
 };
 
 const songsResultReducer = (state = initialState, action) => {
   switch (action.type) {
+    case PLAY_SONG:
+      return {
+        ...state,
+        songToPlay: action.payload,
+      };
+
+    case PLAYED_SONGS:
+      return {
+        ...state,
+        playedSongs: [...state.playedSongs, action.payload],
+      };
+
     case FETCH_SONGS:
       return {
         ...state,
