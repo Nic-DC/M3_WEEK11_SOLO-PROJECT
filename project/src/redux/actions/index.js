@@ -2,6 +2,7 @@ export const PLAY_SONG = `PLAY_SONG`;
 export const PLAYED_SONGS = `PLAYED_SONGS`;
 export const ADD_TO_FAVORITES = `ADD_TO_FAVORITES`;
 export const DELETE_FAVORITE = `DELETE_FAVORITE`;
+// export const FETCH_ARTIST = `FETCH_ARTIST`;
 export const FETCH_SONGS = `FETCH_SONGS`;
 export const FETCH_DEFAULT_SONGS = `FETCH_DEFAULT_SONGS`;
 export const FETCH_SONGS_LOADING = `FETCH_SONGS_LOADING`;
@@ -35,6 +36,13 @@ export const deleteFavoriteAction = (id) => {
     payload: id,
   };
 };
+
+// export const fetchArtistAction = (artists) => {
+//   return {
+//     type: FETCH_ARTIST,
+//     payload: artists,
+//   };
+// };
 
 export const fetchSongsAction = (songs) => {
   return {

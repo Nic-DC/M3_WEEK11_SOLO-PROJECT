@@ -70,9 +70,22 @@ const Player = () => {
               <div className="skip-start">
                 <BsFillSkipStartFill className="faded mr-4" />
               </div>
-              <div className="play">
-                <BsFillPlayFill className="faded mr-4 round-white text-dark" />
-              </div>
+              {songToPlay ? (
+                <div
+                  className="play"
+                  onClick={() => {
+                    let song = new Audio(songToPlay.preview);
+                    song.play();
+                  }}
+                >
+                  <BsFillPlayFill className="faded mr-4 round-white text-dark" />
+                </div>
+              ) : (
+                <div className="play">
+                  <BsFillPlayFill className="faded mr-4 round-white text-dark" />
+                </div>
+              )}
+
               <div className="skip-end">
                 <BsFillSkipEndFill className="faded " />
               </div>
