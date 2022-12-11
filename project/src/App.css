@@ -566,3 +566,7 @@ PROGRESS BAR
   width: 12rem;
   height: 15rem;
 }
+
+#playerFavorite {
+  color: rgba(255, 255, 255, 0.6);
+}

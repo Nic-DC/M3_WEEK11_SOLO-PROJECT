@@ -1,4 +1,5 @@
 export const MAKE_SEARCH_VISIBLE = `MAKE_SEARCH_VISIBLE`;
+export const IS_MUSIC_PLAYING = `IS_MUSIC_PLAYING`;
 export const PLAY_SONG = `PLAY_SONG`;
 export const PLAYED_SONGS = `PLAYED_SONGS`;
 export const ADD_TO_FAVORITES = `ADD_TO_FAVORITES`;
@@ -13,6 +14,12 @@ export const FETCH_ERROR = `FETCH_ERROR`;
 export const makeSearchVisibleAction = () => {
   return {
     type: MAKE_SEARCH_VISIBLE,
+  };
+};
+
+export const isMusicPlayingAction = () => {
+  return {
+    type: IS_MUSIC_PLAYING,
   };
 };
 

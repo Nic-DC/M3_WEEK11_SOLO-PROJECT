@@ -3,6 +3,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import favoriteReducer from "../reducers/favoriteReducer";
 import songsResultReducer from "../reducers/songsResultReducer";
 import searchMusicReducer from "../reducers/searchMusicReducer";
+import playMusicReducer from "../reducers/playMusicReducer";
 
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
   favorites: favoriteReducer,
   songsResult: songsResultReducer,
   searchMusic: searchMusicReducer,
+  playingMusic: playMusicReducer,
 });
 
 const persistConfig = {

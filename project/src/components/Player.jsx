@@ -9,13 +9,18 @@ import { FiRepeat } from "react-icons/fi";
 import { RiPlayList2Fill } from "react-icons/ri";
 import { MdDevices } from "react-icons/md";
 import { BiVolumeFull } from "react-icons/bi";
+import { BsPause } from "react-icons/bs";
 
-import { playedSongsAction } from "../redux/actions";
+import { playedSongsAction, isMusicPlayingAction } from "../redux/actions";
 
 import { useSelector, useDispatch } from "react-redux";
 
 const Player = () => {
   const songToPlay = useSelector((state) => state.songsResult.songToPlay);
+
+  const isMusicPlaying = useSelector((state) => state.playingMusic.isMusicPlaying);
+  console.log("is the music playin'? ", isMusicPlaying);
+
   const dispatch = useDispatch();
 
   return (
@@ -52,12 +57,13 @@ const Player = () => {
             </div>
             <div className="icons-left">
               <AiOutlineHeart
+                id="playerFavorite"
                 className="mr-2 grow"
                 onClick={() => {
                   dispatch(playedSongsAction(songToPlay));
                 }}
               />
-              <BsPip className="grow" />
+              <BsPip className="grow" style={{ color: "rgba(255, 255, 255, 0.6)" }} />
             </div>
           </div>
         </div>
@@ -78,17 +84,29 @@ const Player = () => {
                     song.play();
                   }}
                 >
-                  <BsFillPlayFill className="faded mr-4 round-white text-dark" />
+                  <BsFillPlayFill className="faded mr-4 round-white text-dark grow" />
                 </div>
               ) : (
                 <div className="play">
-                  <BsFillPlayFill className="faded mr-4 round-white text-dark" />
+                  <BsFillPlayFill className="faded mr-4 round-white text-dark grow" />
                 </div>
               )}
 
-              <div className="skip-end">
-                <BsFillSkipEndFill className="faded " />
-              </div>
+              {isMusicPlaying ? (
+                <div
+                  className="skip-end"
+                  onClick={() => {
+                    dispatch(isMusicPlayingAction());
+                  }}
+                >
+                  <BsFillSkipEndFill className="faded grow" />
+                </div>
+              ) : (
+                <div className="skip-end">
+                  <BsFillSkipEndFill className="faded grow" />
+                </div>
+              )}
+
               <div className="repeat">
                 <i className="bi bi-repeat faded mr-4"></i>
                 <FiRepeat className="faded mr-4" />
@@ -108,11 +126,11 @@ const Player = () => {
         <div className="col-sm-6 col-lg-3 align-fixed-right order-sm-2 order-lg-2">
           <div id="fixed-right">
             <div className="icons-right">
-              <RiPlayList2Fill className="mr-2" />
+              <RiPlayList2Fill className="mr-2" style={{ color: "rgba(255, 255, 255, 0.6)" }} />
 
-              <MdDevices className="mr-2" />
+              <MdDevices className="mr-2" style={{ color: "rgba(255, 255, 255, 0.6)" }} />
 
-              <BiVolumeFull className="mr-2" />
+              <BiVolumeFull className="mr-2" style={{ color: "rgba(255, 255, 255, 0.6)" }} />
             </div>
             <div class="volume"></div>
           </div>

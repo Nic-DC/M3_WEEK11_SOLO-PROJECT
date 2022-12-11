@@ -54,7 +54,7 @@ const HomepageMorning = () => {
                 <strong className="truncate line-clamp-2 ">{data.title}</strong>
                 <Badge
                   className="ml-2"
-                  variant={songsList.includes(data) ? "dark" : "light"}
+                  variant={songsList.includes(data) ? "warning" : "dark"}
                   onClick={() => {
                     // dispatch({
                     //   type: `ADD_TO_FAVORITES`,
