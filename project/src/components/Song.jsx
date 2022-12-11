@@ -4,7 +4,7 @@ import { RiDeleteBin2Fill } from "react-icons/ri";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { RxDividerVertical } from "react-icons/rx";
-import { addToFavoritesAction, deleteFavoriteAction, playSongAction } from "../redux/actions";
+import { addToFavoritesAction, deleteFavoriteAction, playSongAction, artistSelectedAction } from "../redux/actions";
 
 import { Card } from "react-bootstrap";
 
@@ -15,11 +15,23 @@ const Song = ({ data, deleteSong }) => {
   const songsList = useSelector((state) => state.favorites.favList);
   console.log({ songsList });
 
+  const selectedArtist = useSelector((state) => state.songsResult.selectedArtist);
+  console.log("the selected artist is: ", selectedArtist);
+
   const dispatch = useDispatch();
   console.log({ dispatch });
   return (
     <Card className="p-0 m-2" id="bigCardsHome">
-      <Card.Img variant="top" src={data.artist.picture_medium} />
+      <Link to={`/${selectedArtist.artist.name}`}>
+        <Card.Img
+          variant="top"
+          src={data.artist.picture_medium}
+          onClick={() => {
+            dispatch(artistSelectedAction(data));
+          }}
+        />
+      </Link>
+
       <Card.Body>
         <Card.Title className="card-title line-clamp-1">{data.title}</Card.Title>
         <Card.Text className="card-text line-clamp-1" id="cardText">

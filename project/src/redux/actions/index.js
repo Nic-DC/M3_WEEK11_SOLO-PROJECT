@@ -10,7 +10,14 @@ export const FETCH_DEFAULT_SONGS = `FETCH_DEFAULT_SONGS`;
 export const FETCH_SONGS_LOADING = `FETCH_SONGS_LOADING`;
 export const TRIGGER_FETCH = `TRIGGER_FETCH`;
 export const FETCH_ERROR = `FETCH_ERROR`;
+export const ARTIST_SELECTED = `ARTIST_SELECTED`;
 
+export const artistSelectedAction = (artist) => {
+  return {
+    type: ARTIST_SELECTED,
+    payload: artist,
+  };
+};
 export const makeSearchVisibleAction = () => {
   return {
     type: MAKE_SEARCH_VISIBLE,

@@ -7,6 +7,7 @@ import FavoritesPage from "./components/FavoritesPage";
 import Home from "./components/Home";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Artist from "./components/Artist";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/:artist" element={<Artist />} />
         </Routes>
       </div>
     </BrowserRouter>

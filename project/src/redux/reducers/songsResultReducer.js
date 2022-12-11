@@ -6,6 +6,7 @@ import {
   FETCH_ERROR,
   PLAY_SONG,
   PLAYED_SONGS,
+  ARTIST_SELECTED,
 } from "../actions";
 
 const initialState = {
@@ -16,10 +17,16 @@ const initialState = {
   isError: false,
   defaultSongs: [],
   playedSongs: [],
+  selectedArtist: null,
 };
 
 const songsResultReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ARTIST_SELECTED:
+      return {
+        ...state,
+        selectedArtist: action.payload,
+      };
     case PLAY_SONG:
       return {
         ...state,
