@@ -3,14 +3,16 @@ import { IoIosArrowForward } from "react-icons/io";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsFillTrash2Fill } from "react-icons/bs";
 
-import { Form } from "react-bootstrap";
+import { Form, Collapse } from "react-bootstrap";
 
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 import { getSongsAction } from "../redux/actions";
 
 const HomeProfile = () => {
+  const isSearchVisible = useSelector((state) => state.searchMusic.isSearchBarVisible);
+  console.log("is search visible?: ", isSearchVisible);
   const dispatch = useDispatch();
 
   const [query, setQuery] = useState("");
@@ -39,8 +41,8 @@ const HomeProfile = () => {
       </div>
 
       {/* <!-- SEARCH BAR--> */}
-      <div className="input-group customizeInput" id="collapseExample">
-        {/* <input
+      {/* <div className="input-group customizeInput" id="collapseExample"> */}
+      {/* <input
           type="text"
           className="form-control"
           placeholder="search album / artist / band"
@@ -48,16 +50,38 @@ const HomeProfile = () => {
           aria-describedby="searchInput"
           id="inputSearch"
         /> */}
-        <Form onSubmit={handleSubmit}>
-          <Form.Control type="search" placeholder="type and press Enter" value={query} onChange={handleQuery} />
-        </Form>
 
-        <div className="input-group-prepend">
-          <button type="button" class="btn btn-dark grow" id="resetInput">
-            <BsFillTrash2Fill />
-          </button>
+      {/* <div id="isSearchVisible" style={isSearchVisible ? { visibility: "visible" } : { visibility: "hidden" }}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Control
+              type="search"
+              placeholder="type and press Enter"
+              value={query}
+              onChange={handleQuery}
+              id="searchBar"
+            />
+          </Form> */}
+
+      {/* <div className="input-group-prepend">
+              <button type="button" class="btn btn-dark grow" id="resetInput">
+                <BsFillTrash2Fill />
+              </button>
+            </div> */}
+      {/* </div> */}
+      <Collapse in={isSearchVisible}>
+        <div id="example-collapse-text">
+          <Form onSubmit={handleSubmit}>
+            <Form.Control
+              type="search"
+              placeholder="type and press Enter"
+              value={query}
+              onChange={handleQuery}
+              id="searchBar"
+            />
+          </Form>
         </div>
-      </div>
+      </Collapse>
+      {/* </div> */}
 
       <div className="btn-group" id="profile">
         <button

@@ -1,7 +1,14 @@
 import { getSongsActionOnLoad } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Song from "./Song";
+
+import { AiTwotoneHeart } from "react-icons/ai";
+import { BsPlayCircle } from "react-icons/bs";
+import { RxDividerVertical } from "react-icons/rx";
+
+import { addToFavoritesAction, playSongAction } from "../redux/actions";
+
+import { Toast, Badge, Row, Col } from "react-bootstrap";
 
 const HomepageMorning = () => {
   const dispatch = useDispatch();
@@ -9,7 +16,8 @@ const HomepageMorning = () => {
   useEffect(() => {
     dispatch(getSongsActionOnLoad());
   }, []);
-
+  const songsList = useSelector((state) => state.favorites.favList);
+  console.log({ songsList });
   const songs = useSelector((state) => state.songsResult.defaultSongs);
   console.log(songs);
 
@@ -37,14 +45,40 @@ const HomepageMorning = () => {
   // };
   return (
     <div>
-      <h2 className="text-light">Good Morning</h2>
-      <div className="row mt-4 row-cols-5" id="goodMorning">
-        {/* <div className="col-lg-2"> */}
-        {songs.slice(0, 4).map((song) => (
-          <Song key={song.id} data={song} deleteSong={false} />
+      <Row className="mt-5">
+        {songs.slice(0, 8).map((data) => (
+          <Col key={data.id}>
+            <Toast className="mb-4 mr-0 " id="morningToast">
+              <Toast.Header closeButton={false} className="p-0 m-0" id="morningToastHeader">
+                <img src={data.artist.picture_small} className="rounded mr-2" alt="" />
+                <strong className="truncate line-clamp-2 ">{data.title}</strong>
+                <Badge
+                  className="ml-2"
+                  variant={songsList.includes(data) ? "dark" : "light"}
+                  onClick={() => {
+                    // dispatch({
+                    //   type: `ADD_TO_FAVORITES`,
+                    //   payload: data,
+                    // });
+                    dispatch(addToFavoritesAction(data));
+                  }}
+                >
+                  <AiTwotoneHeart id="favorite" />
+                </Badge>
+                <RxDividerVertical />{" "}
+                <BsPlayCircle
+                  className="text-light"
+                  id="playSongHome"
+                  onClick={() => {
+                    dispatch(playSongAction(data));
+                  }}
+                />
+              </Toast.Header>
+              {/* <Toast.Body>Hello, world! This is a toast message.</Toast.Body> */}
+            </Toast>
+          </Col>
         ))}
-        {/* </div> */}
-      </div>
+      </Row>
     </div>
   );
 };

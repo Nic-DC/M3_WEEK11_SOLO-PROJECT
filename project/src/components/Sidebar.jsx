@@ -1,4 +1,5 @@
-import logo from "../assets/spotify.png";
+import { Image } from "react-bootstrap";
+import logo from "../assets/Spotify-Logo-White.jpeg";
 import heart from "../assets/purple-heart.png";
 import { BsSearch } from "react-icons/bs";
 import { BsMusicNoteBeamed } from "react-icons/bs";
@@ -11,19 +12,15 @@ import { makeSearchVisibleAction } from "../redux/actions";
 import { Link } from "react-router-dom";
 import HomeSidebarPlaylist from "./HomeSidebarPlaylist";
 
-const HomeSidebar = () => {
+const Sidebar = () => {
   const dispatch = useDispatch();
   return (
-    <div id="sidebarDiv" className="px-2">
-      {/* <div className="container-fluid">
-        <div className="row">
-          <div class="column12 col-md-3 col-lg-2 padding-top"> */}
-      <div id="logo" className="flex-align-center mb-4 grow">
-        <img className="img-fluid" src={logo} alt="spotify logo" />
-      </div>
-      <div id="home" className="sidebar-align-left grow d-none d-md-block ml-0">
+    <div>
+      <Image src={logo} fluid id="logoImage" className="grow mb-4" />
+
+      <div id="home" className="sidebar-align-left grow d-none d-md-block ml-2 mb-2">
         {/* <i class="bi bi-house-door mr-3"></i> */}
-        <BiHomeSmile className="mr-3 text-light" />
+        <BiHomeSmile className="mr-3 text-light react-icons-homepage" />
         <span className="sidebar-text text-light">Home</span>
       </div>
       {/* <!-- Search - collapse --> */}
@@ -37,37 +34,37 @@ const HomeSidebar = () => {
       >
         <div
           id="search"
-          className="sidebar-align-left grow ml-0"
+          className="sidebar-align-left grow ml-2 mb-2"
           onClick={() => {
             dispatch(makeSearchVisibleAction());
           }}
         >
-          <BsSearch className="mr-3 text-light" />
+          <BsSearch className="mr-3 text-light react-icons-homepage" />
           <span className="sidebar-text text-light">Search</span>
         </div>
       </a>
 
-      <div id="library" className="sidebar-align-left mb-4 grow d-none d-md-block ml-0">
-        <BsMusicNoteBeamed className="mr-3 text-light" />
+      <div id="library" className="sidebar-align-left mb-4 grow d-none d-md-block ml-2 mb-2">
+        <BsMusicNoteBeamed className="mr-3 text-light react-icons-homepage" />
         <span class="sidebar-text text-light">Library</span>
       </div>
-      <div id="playlist" className="mb-2 sidebar-align-left grow d-none d-md-block ml-0">
-        <AiOutlinePlusSquare className="mr-3 text-light" />
+      <div id="playlist" className="mb-2 sidebar-align-left grow d-none d-md-block ml-2 mb-2">
+        <AiOutlinePlusSquare className="mr-3 text-light react-icons-homepage" />
         <span class="sidebar-text text-light">Create Playlist</span>
       </div>
       <Link to={`/favorites`}>
-        <div id="likedSongs" className="sidebar-align-left grow d-none d-md-block ml-0">
+        <div id="likedSongs" className="sidebar-align-left grow d-none d-md-block ml-2 mb-2">
           <img class="img-fluid img-small mr-3" src={heart} alt="white heart on purple background" />
           <span class="sidebar-text text-light">Liked Songs</span>
         </div>
       </Link>
 
       {/* <!-- DIVIDER --> */}
-      <div class="translucidLine d-none d-md-block"></div>
+      <div class="translucidLine d-none d-md-block ml-2 mt-4"></div>
 
       {/* <!-- SIDEBAR - LIST DIV --> */}
       <HomeSidebarPlaylist />
     </div>
   );
 };
-export default HomeSidebar;
+export default Sidebar;

@@ -515,3 +515,54 @@ PROGRESS BAR
 #cardText {
   height: 350px;
 }
+
+#isSearchVisible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebarDiv {
+  background-color: #000000;
+}
+
+#morningToast {
+  background-color: #000000;
+  border-radius: 3px;
+  border: none;
+  width: 15rem;
+  align-self: stretch;
+}
+
+#searchBar {
+  width: 500px;
+}
+
+/* REACT SPOTIFY */
+
+#sidebarCol {
+  background-color: #000000;
+  padding: 2rem 2rem;
+}
+#logoImage {
+  width: 10rem;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.react-icons-homepage {
+  font-size: 1.5rem;
+}
+
+#contentCol {
+  padding: 2rem 2rem;
+}
+
+#morningToastHeader {
+  background-color: #000000;
+}
+
+#bigCardsHome {
+  width: 12rem;
+  height: 15rem;
+}

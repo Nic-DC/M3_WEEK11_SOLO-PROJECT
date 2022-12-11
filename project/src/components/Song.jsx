@@ -18,14 +18,14 @@ const Song = ({ data, deleteSong }) => {
   const dispatch = useDispatch();
   console.log({ dispatch });
   return (
-    <Card className="p-0 m-2">
+    <Card className="p-0 m-2" id="bigCardsHome">
       <Card.Img variant="top" src={data.artist.picture_medium} />
       <Card.Body>
-        <Card.Title className="card-title line-clamp-2">{data.title}</Card.Title>
-        <Card.Text className="card-text line-clamp-2" id="cardText">
+        <Card.Title className="card-title line-clamp-1">{data.title}</Card.Title>
+        <Card.Text className="card-text line-clamp-1" id="cardText">
           {data.duration}' <RxDividerVertical />{" "}
           <Badge
-            variant={songsList.includes(data) ? "dark" : "light"}
+            variant={songsList.includes(data) ? "warning" : "dark"}
             onClick={() => {
               // dispatch({
               //   type: `ADD_TO_FAVORITES`,

@@ -34,7 +34,7 @@ const HomeTry = () => {
               </div>
             </div>
           </div> --> */}
-        {songs.slice(5, 9).map((song) => (
+        {songs.slice(6, 11).map((song) => (
           <Song key={song.id} data={song} deleteSong={false} />
         ))}
       </div>

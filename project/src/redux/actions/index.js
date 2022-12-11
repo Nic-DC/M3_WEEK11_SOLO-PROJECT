@@ -1,3 +1,4 @@
+export const MAKE_SEARCH_VISIBLE = `MAKE_SEARCH_VISIBLE`;
 export const PLAY_SONG = `PLAY_SONG`;
 export const PLAYED_SONGS = `PLAYED_SONGS`;
 export const ADD_TO_FAVORITES = `ADD_TO_FAVORITES`;
@@ -8,6 +9,12 @@ export const FETCH_DEFAULT_SONGS = `FETCH_DEFAULT_SONGS`;
 export const FETCH_SONGS_LOADING = `FETCH_SONGS_LOADING`;
 export const TRIGGER_FETCH = `TRIGGER_FETCH`;
 export const FETCH_ERROR = `FETCH_ERROR`;
+
+export const makeSearchVisibleAction = () => {
+  return {
+    type: MAKE_SEARCH_VISIBLE,
+  };
+};
 
 export const playSongAction = (song) => {
   return {

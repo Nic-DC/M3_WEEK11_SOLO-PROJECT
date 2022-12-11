@@ -7,7 +7,7 @@ const HomeSidebarPlaylist = () => {
   return (
     <ul id="sidebarList" className="sidebar-list d-none d-md-block">
       {playedSongs.map((song) => (
-        <li className="text-light sidebar-items">
+        <li className="text-light sidebar-items ml-2">
           <small className="mr-2"> {song.title}</small>
           <Badge variant="light">{song.artist.name}</Badge>
         </li>
