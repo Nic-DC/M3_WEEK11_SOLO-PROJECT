@@ -18,8 +18,8 @@ import { useSelector, useDispatch } from "react-redux";
 const Player = () => {
   const songToPlay = useSelector((state) => state.songsResult.songToPlay);
 
-  const isMusicPlaying = useSelector((state) => state.playingMusic.isMusicPlaying);
-  console.log("is the music playin'? ", isMusicPlaying);
+  const isMusicPlayingHere = useSelector((state) => state.playingMusic.isMusicPlaying);
+  console.log("is the music playin'? ", isMusicPlayingHere);
 
   const dispatch = useDispatch();
 
@@ -76,23 +76,31 @@ const Player = () => {
               <div className="skip-start">
                 <BsFillSkipStartFill className="faded mr-4" />
               </div>
-              {songToPlay ? (
+              {songToPlay && (
                 <div
                   className="play"
                   onClick={() => {
+                    dispatch(isMusicPlayingAction());
                     let song = new Audio(songToPlay.preview);
-                    song.play();
+                    if (isMusicPlayingHere) {
+                      song.play();
+                      console.log("song playing...");
+                    } else {
+                      song.pause();
+                      console.log("song paused");
+                    }
                   }}
                 >
-                  <BsFillPlayFill className="faded mr-4 round-white text-dark grow" />
-                </div>
-              ) : (
-                <div className="play">
-                  <BsFillPlayFill className="faded mr-4 round-white text-dark grow" />
+                  {" "}
+                  {isMusicPlayingHere ? (
+                    <BsPause className="faded mr-4 round-white text-dark grow" />
+                  ) : (
+                    <BsFillPlayFill className="faded mr-4 round-white text-dark grow" />
+                  )}
                 </div>
               )}
 
-              {isMusicPlaying ? (
+              {songToPlay ? (
                 <div
                   className="skip-end"
                   onClick={() => {

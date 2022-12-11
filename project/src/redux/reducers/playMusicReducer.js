@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const playMusicReducer = (state = initialState, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case IS_MUSIC_PLAYING:
       return {
         ...state,
